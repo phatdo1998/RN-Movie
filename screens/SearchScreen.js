@@ -40,7 +40,7 @@ export default function SearchScreen() {
   const handleTextDebounce = useCallback(debounce(handleChange, 400), []);
 
   return (
-    <View className="flex-1 bg-neutral-800">
+    <View className="flex-1 bg-neutral-800 pt-1">
       <View className="mx-4 mb-3 flex-row border border-neutral-400 rounded-full justify-between">
         <TextInput
           onChangeText={handleTextDebounce}

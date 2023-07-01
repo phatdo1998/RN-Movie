@@ -62,10 +62,15 @@ export default function HomeScreen() {
     }
   };
   return (
-    <SafeAreaView className="flex-1 bg-neutral-800 pt-10">
+    <SafeAreaView className="flex-1 bg-neutral-800 pt-2">
       {/* search bar */}
       <View className="flex-row justify-between px-4 mb-5 ">
-        <Icons.Bars3CenterLeftIcon size={30} strokeWidth={2} color={"white"} />
+        <Icons.Bars3CenterLeftIcon
+          onPress={() => navigation.openDrawer()}
+          size={30}
+          strokeWidth={2}
+          color={"white"}
+        />
         <Text className="text-4xl text-white font-bold">
           <Text style={styles.text}>M</Text>ovie
         </Text>
