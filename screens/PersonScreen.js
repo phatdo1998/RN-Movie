@@ -4,6 +4,7 @@ import {
   Dimensions,
   Image,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,

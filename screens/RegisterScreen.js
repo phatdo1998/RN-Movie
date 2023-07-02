@@ -17,6 +17,9 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import BackButton from "../components/BackButton";
 import { HeartIcon } from "react-native-heroicons/outline";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../components/Loading";
+import { setUserLoading } from "../redux/slices/user";
 
 export default function LoginScreen() {
   const loginValidationScheme = Yup.object().shape({
@@ -47,18 +50,23 @@ export default function LoginScreen() {
 
   const mt = `${keyboard ? "-mt-10" : "-mt-20"}`;
   const navigation = useNavigation();
+  const { userLoading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{ email: "", password: "", confirmPassword: "" }}
       onSubmit={async (value) => {
         if (value) {
+          dispatch(setUserLoading(true));
           await createUserWithEmailAndPassword(
             auth,
             value.email,
             value.password
           );
+          dispatch(setUserLoading(false));
         } else {
           alert("Error");
+          dispatch(setUserLoading(false));
         }
       }}
       validationSchema={loginValidationScheme}
@@ -158,16 +166,26 @@ export default function LoginScreen() {
                 )}
               </View>
               <View className="mb-10">
-                <TouchableOpacity
-                  disabled={!isValid}
-                  onPress={handleSubmit}
-                  style={{
-                    backgroundColor: isValid ? theme.background : "#F16767",
-                  }}
-                  className={`items-center w-full mt-3 py-3 rounded-3xl `}
-                >
-                  <Text className="font-bold text-white text-xl">Register</Text>
-                </TouchableOpacity>
+                {userLoading ? (
+                  <TouchableOpacity
+                    className={`items-center w-full mt-6 py-3 rounded-3xl  `}
+                  >
+                    <Loading />
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    disabled={!isValid}
+                    onPress={handleSubmit}
+                    style={{
+                      backgroundColor: isValid ? theme.background : "#F16767",
+                    }}
+                    className={`items-center w-full mt-3 py-3 rounded-3xl `}
+                  >
+                    <Text className="font-bold text-white text-xl">
+                      Register
+                    </Text>
+                  </TouchableOpacity>
+                )}
               </View>
             </View>
           </View>

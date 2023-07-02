@@ -18,6 +18,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BackButton from "../components/BackButton";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../components/Loading";
+import { setUserLoading } from "../redux/slices/user";
 
 export default function LoginScreen() {
   const loginValidationScheme = Yup.object().shape({
@@ -45,14 +48,20 @@ export default function LoginScreen() {
   const mt = `${keyboard ? "-mt-5" : "mt-14"}`;
   const navigation = useNavigation();
 
+  const { userLoading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       onSubmit={async (value) => {
         if (value) {
+          dispatch(setUserLoading(true));
           await signInWithEmailAndPassword(auth, value.email, value.password);
+          dispatch(setUserLoading(false));
         } else {
           alert("Error");
+          dispatch(setUserLoading(false));
         }
       }}
       validationSchema={loginValidationScheme}
@@ -67,11 +76,6 @@ export default function LoginScreen() {
         isValid,
       }) => (
         <KeyboardAvoidingView className="flex-1 bg-neutral-900">
-          <View className="w-full z-20">
-            <SafeAreaView className="w-full absolute top-2 z-20 flex-row justify-between items-center px-4">
-              <BackButton />
-            </SafeAreaView>
-          </View>
           <View className=" flex-1 items-center justify-center">
             <Text style={styles.text} className="font-extrabold text-6xl">
               L<Text className="text-white">ogin</Text>
@@ -132,17 +136,26 @@ export default function LoginScreen() {
               </TouchableOpacity>
             </View>
           </View>
-          <View className="flex-1 mx-4">
-            <TouchableOpacity
-              onPress={handleSubmit}
-              disabled={!isValid}
-              style={{
-                backgroundColor: isValid ? theme.background : "#F16767",
-              }}
-              className={`justify-center items-center ${mt} py-3 rounded-3xl`}
-            >
-              <Text className="font-bold text-white text-xl">Login</Text>
-            </TouchableOpacity>
+          <View className="flex-1 mx-4 ">
+            {userLoading ? (
+              <TouchableOpacity
+                className={`justify-center items-center ${mt} py-3 rounded-3xl`}
+              >
+                <Loading />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={handleSubmit}
+                disabled={!isValid}
+                style={{
+                  backgroundColor: isValid ? theme.background : "#F16767",
+                }}
+                className={`justify-center items-center ${mt} py-3 rounded-3xl`}
+              >
+                <Text className="font-bold text-white text-xl">Login</Text>
+              </TouchableOpacity>
+            )}
+
             <TouchableOpacity
               onPress={() => navigation.navigate("Register")}
               style={styles.background}

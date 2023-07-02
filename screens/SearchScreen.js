@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   Dimensions,
+  StatusBar,
 } from "react-native";
 import React, { useCallback, useState } from "react";
 import { XMarkIcon } from "react-native-heroicons/outline";
@@ -41,6 +42,7 @@ export default function SearchScreen() {
 
   return (
     <View className="flex-1 bg-neutral-800 pt-1">
+      <StatusBar />
       <View className="mx-4 mb-3 flex-row border border-neutral-400 rounded-full justify-between">
         <TextInput
           onChangeText={handleTextDebounce}

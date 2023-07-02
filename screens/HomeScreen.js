@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Icons from "react-native-heroicons/outline";
@@ -63,6 +64,7 @@ export default function HomeScreen() {
   };
   return (
     <SafeAreaView className="flex-1 bg-neutral-800 pt-2">
+      <StatusBar />
       {/* search bar */}
       <View className="flex-row justify-between px-4 mb-5 ">
         <Icons.Bars3CenterLeftIcon

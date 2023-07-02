@@ -9,6 +9,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import CustomDrawer from "../components/CustomDrawer";
 import * as Icons from "react-native-heroicons/solid";
 import { theme } from "../themes";
+import Settings from "../screens/Settings";
 
 const Drawer = createDrawerNavigator();
 
@@ -34,44 +35,14 @@ export default function DrawerNavigation() {
         component={Navigation}
       />
       <Drawer.Screen
-        name="Search"
+        name="Setting"
         options={{
           headerShown: false,
           drawerIcon: ({ color }) => {
-            return <Icons.HomeIcon size={"20"} color={color} />;
+            return <Icons.Cog8ToothIcon size={"20"} color={color} />;
           },
         }}
-        component={SearchScreen}
-      />
-      <Drawer.Screen
-        name="Person"
-        options={{
-          headerShown: false,
-          drawerIcon: ({ color }) => {
-            return <Icons.HomeIcon size={"20"} color={color} />;
-          },
-        }}
-        component={PersonScreen}
-      />
-      <Drawer.Screen
-        name="Login"
-        options={{
-          headerShown: false,
-          drawerIcon: ({ color }) => {
-            return <Icons.HomeIcon size={"20"} color={color} />;
-          },
-        }}
-        component={LoginScreen}
-      />
-      <Drawer.Screen
-        name="Register"
-        options={{
-          headerShown: false,
-          drawerIcon: ({ color }) => {
-            return <Icons.HomeIcon size={"20"} color={color} />;
-          },
-        }}
-        component={RegisterScreen}
+        component={Settings}
       />
     </Drawer.Navigator>
   );

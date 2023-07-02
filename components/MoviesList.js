@@ -36,7 +36,7 @@ export default function MoviesList({ data, title, hideSeeAll }) {
               key={index}
               onPress={() => navigation.navigate("Movie", item)}
             >
-              <View className="mr-3 space-y-1">
+              <View style={{ width: 140 }} className="mr-3 space-y-1">
                 <Image
                   className="rounded-3xl ml-1"
                   style={{ width: width * 0.33, height: height * 0.22 }}
