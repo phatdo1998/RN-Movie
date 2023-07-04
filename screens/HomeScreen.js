@@ -64,7 +64,7 @@ export default function HomeScreen() {
   };
   return (
     <SafeAreaView className="flex-1 bg-neutral-800 pt-2">
-      <StatusBar />
+      <StatusBar barStyle={"default"} />
       {/* search bar */}
       <View className="flex-row justify-between px-4 mb-5 ">
         <Icons.Bars3CenterLeftIcon
@@ -73,7 +73,7 @@ export default function HomeScreen() {
           strokeWidth={2}
           color={"white"}
         />
-        <Text className="text-4xl text-white font-bold">
+        <Text className="text-4xl text-white font-extrabold">
           <Text style={styles.text}>M</Text>ovie
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Search")}>

@@ -19,16 +19,16 @@ export default function WelcomeScreen() {
     >
       <View className="flex-1 justify-center items-center">
         <Image
-          className="w-72 h-72 mt-20"
+          className="w-64 h-64 mt-20"
           source={require("../assets/images/logo.jpg")}
         />
       </View>
       <View className="flex-1 justify-center items-center ">
-        <Text className="text-5xl  text-white">Welcome to </Text>
+        <Text className="text-4xl  text-white">Welcome to </Text>
         <View className="mt-10">
           <Text
             style={{ color: "#fe0000" }}
-            className="font-extrabold text-7xl"
+            className="font-extrabold text-5xl"
           >
             M<Text className="text-white">ovie</Text>
           </Text>
@@ -40,7 +40,7 @@ export default function WelcomeScreen() {
           style={{
             backgroundColor: theme.background,
           }}
-          className={`p-4 w-full rounded-full`}
+          className={`p-3 w-full rounded-full`}
         >
           <View className=" justify-center items-center">
             <Text className="text-white font-bold text-2xl">Get started</Text>

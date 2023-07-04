@@ -57,16 +57,18 @@ export default function LoginScreen() {
       initialValues={{ email: "", password: "", confirmPassword: "" }}
       onSubmit={async (value) => {
         if (value) {
-          dispatch(setUserLoading(true));
-          await createUserWithEmailAndPassword(
-            auth,
-            value.email,
-            value.password
-          );
-          dispatch(setUserLoading(false));
-        } else {
-          alert("Error");
-          dispatch(setUserLoading(false));
+          try {
+            dispatch(setUserLoading(true));
+            await createUserWithEmailAndPassword(
+              auth,
+              value.email,
+              value.password
+            );
+            dispatch(setUserLoading(false));
+          } catch (error) {
+            alert("An error has occurred");
+            dispatch(setUserLoading(false));
+          }
         }
       }}
       validationSchema={loginValidationScheme}
@@ -80,9 +82,12 @@ export default function LoginScreen() {
         errors,
         isValid,
       }) => (
-        <KeyboardAvoidingView className="flex-1 bg-neutral-900">
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          className="flex-1 bg-neutral-900"
+        >
           <View className="w-full z-20">
-            <SafeAreaView className="w-full absolute top-11 z-20 flex-row justify-between items-center px-4">
+            <SafeAreaView className="w-full absolute top-5 z-20 flex-row justify-between items-center px-4">
               <BackButton />
             </SafeAreaView>
           </View>
@@ -117,7 +122,7 @@ export default function LoginScreen() {
                   value={values.password}
                   placeholderTextColor={"lightgray"}
                   placeholder="Enter Your Password"
-                  className="bg-neutral-600 rounded-xl p-3 pl-4 w-full text-white text-base mt-4"
+                  className="bg-neutral-600 rounded-xl p-3 pl-4 pr-11 w-full text-white text-base mt-4"
                 />
                 <TouchableOpacity
                   onPress={() => setSecurity(!security)}
@@ -145,7 +150,7 @@ export default function LoginScreen() {
                   value={values.confirmPassword}
                   placeholderTextColor={"lightgray"}
                   placeholder="Confirm Password"
-                  className="bg-neutral-600 rounded-xl p-3 pl-4 w-full text-white text-base mt-4 "
+                  className="bg-neutral-600 rounded-xl p-3 pl-4 pr-11 w-full text-white text-base mt-4 "
                 />
                 <TouchableOpacity
                   onPress={() => setConfirmSecurity(!confirmSecurity)}
@@ -179,7 +184,7 @@ export default function LoginScreen() {
                     style={{
                       backgroundColor: isValid ? theme.background : "#F16767",
                     }}
-                    className={`items-center w-full mt-3 py-3 rounded-3xl `}
+                    className={`items-center w-full mt-3 py-2 rounded-3xl `}
                   >
                     <Text className="font-bold text-white text-xl">
                       Register

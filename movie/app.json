@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "movie-app",
-    "slug": "movie-app",
+    "name": "movie",
+    "slug": "movie",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/logo.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,18 +17,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.jpg",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.phatdo1998.movieapp"
+      }
     },
     "web": {
-      "favicon": "./assets/images/logo.jpg"
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "fa5b22ff-1db6-439a-a877-e55cb98d056a"
+        "projectId": "52455c4a-54ed-4169-81bf-d99f80772bb0"
       }
-    }
+    },
+    "owner": "phatdo1998"
   }
 }

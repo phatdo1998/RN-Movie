@@ -21,6 +21,7 @@ import BackButton from "../components/BackButton";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import { setUserLoading } from "../redux/slices/user";
+import { ChevronLeftIcon } from "react-native-heroicons/outline";
 
 export default function LoginScreen() {
   const loginValidationScheme = Yup.object().shape({
@@ -56,12 +57,14 @@ export default function LoginScreen() {
       initialValues={{ email: "", password: "" }}
       onSubmit={async (value) => {
         if (value) {
-          dispatch(setUserLoading(true));
-          await signInWithEmailAndPassword(auth, value.email, value.password);
-          dispatch(setUserLoading(false));
-        } else {
-          alert("Error");
-          dispatch(setUserLoading(false));
+          try {
+            dispatch(setUserLoading(true));
+            await signInWithEmailAndPassword(auth, value.email, value.password);
+            dispatch(setUserLoading(false));
+          } catch (error) {
+            alert("Incorrect email or password");
+            dispatch(setUserLoading(false));
+          }
         }
       }}
       validationSchema={loginValidationScheme}
@@ -76,8 +79,21 @@ export default function LoginScreen() {
         isValid,
       }) => (
         <KeyboardAvoidingView className="flex-1 bg-neutral-900">
+          <View className="w-full z-20">
+            <SafeAreaView className="w-full absolute top-1 z-20 flex-row justify-between items-center px-4">
+              <TouchableOpacity
+                style={styles.background}
+                className="rounded-xl p-1"
+                onPress={() => {
+                  navigation.navigate("Welcome");
+                }}
+              >
+                <ChevronLeftIcon size={30} strokeWidth={2.5} color={"white"} />
+              </TouchableOpacity>
+            </SafeAreaView>
+          </View>
           <View className=" flex-1 items-center justify-center">
-            <Text style={styles.text} className="font-extrabold text-6xl">
+            <Text style={styles.text} className="font-extrabold text-5xl">
               L<Text className="text-white">ogin</Text>
             </Text>
           </View>
@@ -106,11 +122,11 @@ export default function LoginScreen() {
                   value={values.password}
                   placeholderTextColor={"lightgray"}
                   placeholder="Enter Your Password"
-                  className="bg-neutral-600 rounded-xl p-3 pl-4 w-full text-white text-base mt-1"
+                  className="bg-neutral-600 rounded-xl p-3 pl-4 pr-11 w-full text-white text-base"
                 />
                 <TouchableOpacity
                   onPress={() => setSecurity(!security)}
-                  className="absolute right-3 top-5"
+                  className="absolute right-3 top-4"
                 >
                   {security ? (
                     <Icon.EyeOff width={20} height={20} color={"white"} />
@@ -126,14 +142,16 @@ export default function LoginScreen() {
                   <Text className="mt-1 ml-1 text-base">''</Text>
                 )}
               </View>
-              <TouchableOpacity>
-                <Text
-                  style={styles.text}
-                  className="mt-2 text-right underline text-base "
-                >
-                  Forgot password ?
-                </Text>
-              </TouchableOpacity>
+              <View className="w-full flex-row justify-end">
+                <TouchableOpacity className=" w-[35%]">
+                  <Text
+                    style={styles.text}
+                    className="mt-2 underline text-base "
+                  >
+                    Forgot password ?
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
           <View className="flex-1 mx-4 ">
@@ -150,7 +168,7 @@ export default function LoginScreen() {
                 style={{
                   backgroundColor: isValid ? theme.background : "#F16767",
                 }}
-                className={`justify-center items-center ${mt} py-3 rounded-3xl`}
+                className={`justify-center items-center ${mt} py-2 rounded-3xl`}
               >
                 <Text className="font-bold text-white text-xl">Login</Text>
               </TouchableOpacity>
@@ -159,7 +177,7 @@ export default function LoginScreen() {
             <TouchableOpacity
               onPress={() => navigation.navigate("Register")}
               style={styles.background}
-              className="justify-center items-center  mt-5 py-3 rounded-3xl"
+              className="justify-center items-center mt-5 py-2 rounded-3xl"
             >
               <Text className="font-bold text-white text-xl">Register</Text>
             </TouchableOpacity>
@@ -174,16 +192,16 @@ export default function LoginScreen() {
                     -----------------------------------------
                   </Text>
                 </View>
-                <View className="flex-row justify-around items-center mt-6">
+                <View className="flex-row justify-around items-center mt-10">
                   <TouchableOpacity>
                     <Image
-                      className="w-16 h-16"
+                      className="w-14 h-14"
                       source={require("../assets/images/Facebook_f_logo_(2021).svg.png")}
                     />
                   </TouchableOpacity>
                   <TouchableOpacity>
                     <Image
-                      className="w-16 h-16"
+                      className="w-14 h-14"
                       source={require("../assets/images/Google__G__Logo.svg.png")}
                     />
                   </TouchableOpacity>
