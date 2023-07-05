@@ -63,7 +63,7 @@ export default function HomeScreen() {
   };
   return (
     <SafeAreaView className="flex-1 bg-neutral-800 pt-2">
-      <StatusBar barStyle={"light-content"} />
+      <StatusBar barStyle={"dark-content"} />
       <View className="flex-row justify-between px-4 mb-5 ">
         <Icons.Bars3CenterLeftIcon
           onPress={() => navigation.openDrawer()}

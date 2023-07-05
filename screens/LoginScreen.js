@@ -142,10 +142,10 @@ export default function LoginScreen() {
                 )}
               </View>
               <View className="w-full flex-row justify-end">
-                <TouchableOpacity className=" w-[35%]">
+                <TouchableOpacity className=" w-[45%]">
                   <Text
                     style={styles.text}
-                    className="mt-2 underline text-base "
+                    className="mt-2 ml-8 underline text-base "
                   >
                     Forgot password ?
                   </Text>
