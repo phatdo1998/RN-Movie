@@ -92,7 +92,7 @@ export default function LoginScreen() {
             </SafeAreaView>
           </View>
           <View className="z-0 relative flex-1 items-center justify-center">
-            <Text style={styles.text} className="font-extrabold text-6xl z-0">
+            <Text style={styles.text} className="font-extrabold text-5xl z-0">
               R<Text className="text-white">egister</Text>
             </Text>
           </View>
