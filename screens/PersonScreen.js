@@ -4,7 +4,6 @@ import {
   Dimensions,
   Image,
   ScrollView,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
@@ -19,7 +18,6 @@ import { theme } from "../themes";
 var { width, height } = Dimensions.get("window");
 export default function PersonScreen() {
   const [isFavourite, toggleFavourite] = useState(false);
-  const character = "John Wick";
   const [loading, setLoading] = useState(false);
   const [personMovies, setPersonMovies] = useState([1, 2, 3, 4, 5]);
   const [person, setPerson] = useState({});
@@ -62,7 +60,6 @@ export default function PersonScreen() {
           <View className="items-center rounded-full overflow-hidden h-72 w-72 border-neutral-500 border-2">
             <Image
               style={{ height: height * 0.43, width: width * 0.74 }}
-              // source={require("../assets/images/castImage2.png")}
               source={{ uri: imageW500(person?.profile_path) }}
             />
           </View>

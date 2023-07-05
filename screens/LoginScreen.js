@@ -11,17 +11,16 @@ import {
   View,
 } from "react-native";
 
-import * as Icon from "react-native-feather";
-import * as Yup from "yup";
-import { styles, theme } from "../themes";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
-import { SafeAreaView } from "react-native-safe-area-context";
-import BackButton from "../components/BackButton";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading";
-import { setUserLoading } from "../redux/slices/user";
+import * as Icon from "react-native-feather";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
+import * as Yup from "yup";
+import Loading from "../components/Loading";
+import { auth } from "../config/firebase";
+import { setUserLoading } from "../redux/slices/user";
+import { styles, theme } from "../themes";
 
 export default function LoginScreen() {
   const loginValidationScheme = Yup.object().shape({

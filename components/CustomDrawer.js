@@ -14,14 +14,18 @@ import * as Icons from "react-native-heroicons/solid";
 
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { useNavigation } from "@react-navigation/native";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 export default function CustomDrawer(props) {
   const navigation = useNavigation();
 
-  const handleSignOut = async () => {
-    await signOut(auth).then(() => {
-      navigation.navigate("Login");
+  const handleSignOut = () => {
+    navigation.dispatch(DrawerActions.closeDrawer());
+    signOut(auth).then(() => {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Login" }],
+      });
     });
   };
 

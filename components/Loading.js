@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, ActivityIndicator } from "react-native";
+import { View, Dimensions, ActivityIndicator } from "react-native";
 import React from "react";
 import { theme } from "../themes";
 

@@ -87,7 +87,7 @@ export default function LoginScreen() {
           className="flex-1 bg-neutral-900"
         >
           <View className="w-full z-20">
-            <SafeAreaView className="w-full absolute top-5 z-20 flex-row justify-between items-center px-4">
+            <SafeAreaView className="w-full absolute top-1 z-20 flex-row justify-between items-center px-4">
               <BackButton />
             </SafeAreaView>
           </View>

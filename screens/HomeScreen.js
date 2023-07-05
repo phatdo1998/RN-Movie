@@ -19,7 +19,6 @@ import {
   fetchTrendingMovies,
   fetchUpcomingMovies,
 } from "../api";
-// import DrawerNavigation from "../navigation/drawer";
 
 export default function HomeScreen() {
   const [trending, setTrending] = useState([]);
@@ -64,8 +63,7 @@ export default function HomeScreen() {
   };
   return (
     <SafeAreaView className="flex-1 bg-neutral-800 pt-2">
-      <StatusBar barStyle={"default"} />
-      {/* search bar */}
+      <StatusBar barStyle={"light-content"} />
       <View className="flex-row justify-between px-4 mb-5 ">
         <Icons.Bars3CenterLeftIcon
           onPress={() => navigation.openDrawer()}
@@ -77,7 +75,6 @@ export default function HomeScreen() {
           <Text style={styles.text}>M</Text>ovie
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Search")}>
-          {/* <DrawerNavigation /> */}
           <Icons.MagnifyingGlassIcon
             size={30}
             strokeWidth={2}

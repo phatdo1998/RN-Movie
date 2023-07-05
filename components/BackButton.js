@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { TouchableOpacity } from "react-native";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { styles } from "../themes";
-import { useNavigation } from "@react-navigation/native";
 
 export default function BackButton() {
   const navigation = useNavigation();

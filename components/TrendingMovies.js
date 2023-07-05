@@ -41,7 +41,6 @@ const MoviesCard = ({ handleClick, item }) => {
       <Image
         className="rounded-3xl"
         style={{ width: width * 0.6, height: height * 0.4 }}
-        // source={require("../assets/images/moviePoster1.png")}
         source={{ uri: imageW500(item.poster_path) }}
       />
     </TouchableWithoutFeedback>

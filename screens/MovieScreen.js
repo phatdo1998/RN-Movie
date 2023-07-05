@@ -125,9 +125,7 @@ export default function MovieScreen() {
                 {movie?.overview}
               </Text>
             </View>
-            {/* cast */}
             <Cast cast={cast} />
-            {/* similar */}
             <MoviesList title="Similar" data={similar} hideSeeAll={true} />
           </>
         )}

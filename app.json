@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "movie-app",
+    "name": "movieApp",
     "slug": "movie-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.jpg",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.phatdo1998.movieapp"

@@ -1,15 +1,10 @@
-import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import HomeScreen from "../screens/HomeScreen";
-import Navigation from ".";
-import SearchScreen from "../screens/SearchScreen";
-import PersonScreen from "../screens/PersonScreen";
-import LoginScreen from "../screens/LoginScreen";
-import RegisterScreen from "../screens/RegisterScreen";
-import CustomDrawer from "../components/CustomDrawer";
+import React from "react";
 import * as Icons from "react-native-heroicons/solid";
-import { theme } from "../themes";
+import Navigation from ".";
+import CustomDrawer from "../components/CustomDrawer";
 import Settings from "../screens/Settings";
+import { theme } from "../themes";
 
 const Drawer = createDrawerNavigator();
 

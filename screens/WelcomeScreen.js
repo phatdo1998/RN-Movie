@@ -1,14 +1,13 @@
-import {
-  View,
-  Text,
-  BackHandler,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
-import { styles, theme } from "../themes";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { theme } from "../themes";
 
 export default function WelcomeScreen() {
   const navigation = useNavigation();
